@@ -1,0 +1,215 @@
+
+<style>
+.sf5 { background: var(--color-background-tertiary); border-radius: var(--border-radius-lg); padding: 16px; }
+.sf5-label { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 10px; letter-spacing: 0.4px; }
+.sf5-layout { display: grid; grid-template-columns: 200px 1fr; gap: 14px; }
+.sf5-sidebar { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px; display: flex; flex-direction: column; gap: 4px; }
+.sf5-brand { font-size: 15px; font-weight: 500; color: #185FA5; margin-bottom: 12px; }
+.sf5-brand span { color: #378ADD; }
+.sf5-brand-sub { font-size: 10px; background: #FAEEDA; color: #633806; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 12px; }
+.sf5-nav-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: var(--border-radius-md); font-size: 12px; color: var(--color-text-secondary); }
+.sf5-nav-item.active { background: #E6F1FB; color: #0C447C; font-weight: 500; }
+.sf5-nav-item:hover { background: var(--color-background-secondary); }
+.sf5-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-border-secondary); flex-shrink: 0; }
+.sf5-nav-dot.blue { background: #185FA5; }
+.sf5-nav-dot.amber { background: #BA7517; }
+.sf5-nav-dot.red { background: #A32D2D; }
+.sf5-nav-dot.green { background: #3B6D11; }
+.sf5-main { display: flex; flex-direction: column; gap: 14px; }
+.sf5-topbar { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); display: flex; align-items: center; padding: 0 16px; height: 44px; gap: 12px; }
+.sf5-page-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); flex: 1; }
+.sf5-admin-badge { font-size: 11px; background: #FAEEDA; color: #633806; padding: 3px 10px; border-radius: 20px; }
+.sf5-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.sf5-metric { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px; }
+.sf5-metric-label { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 4px; }
+.sf5-metric-val { font-size: 20px; font-weight: 500; color: var(--color-text-primary); }
+.sf5-metric-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 2px; }
+.sf5-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sf5-panel { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px; }
+.sf5-panel-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+.sf5-panel-action { font-size: 12px; color: #185FA5; font-weight: 400; }
+.sf5-table-row { display: grid; align-items: center; padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 12px; }
+.sf5-table-row:last-child { border-bottom: none; }
+.sf5-route-row { grid-template-columns: 80px 1fr 70px 60px; gap: 8px; }
+.sf5-refund-row { grid-template-columns: 90px 1fr 60px 70px; gap: 8px; }
+.sf5-schedule-row { grid-template-columns: 70px 80px 1fr 60px; gap: 8px; }
+.sf5-col-label { color: var(--color-text-tertiary); font-size: 10px; }
+.sf5-tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px; }
+.sf5-tag.active { background: #EAF3DE; color: #27500A; }
+.sf5-tag.pending { background: #FAEEDA; color: #633806; }
+.sf5-tag.cancelled { background: #FCEBEB; color: #791F1F; }
+.sf5-tag.modified { background: #E6F1FB; color: #0C447C; }
+.sf5-edit-btn { font-size: 10px; color: #185FA5; border: 0.5px solid var(--color-border-secondary); border-radius: 4px; padding: 2px 8px; display: inline-block; }
+.sf5-approve-btn { font-size: 10px; color: #27500A; border: 0.5px solid #639922; border-radius: 4px; padding: 2px 8px; background: #EAF3DE; display: inline-block; }
+.sf5-full-panel { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px; }
+.sf5-owner-card { display: flex; align-items: center; gap: 12px; padding: 10px; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); margin-bottom: 8px; }
+.sf5-owner-avatar { width: 32px; height: 32px; border-radius: 50%; background: #B5D4F4; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #0C447C; flex-shrink: 0; }
+</style>
+
+<div class="sf5">
+  <div class="sf5-label">SCREEN 5 — ADMIN DASHBOARD</div>
+
+  <div class="sf5-layout">
+    <div class="sf5-sidebar">
+      <div class="sf5-brand">Simply<span>Fly</span></div>
+      <div class="sf5-brand-sub">Admin portal</div>
+      <div class="sf5-nav-item active"><div class="sf5-nav-dot blue"></div>Dashboard</div>
+      <div class="sf5-nav-item"><div class="sf5-nav-dot blue"></div>Manage routes</div>
+      <div class="sf5-nav-item"><div class="sf5-nav-dot blue"></div>Flight schedules</div>
+      <div class="sf5-nav-item"><div class="sf5-nav-dot amber"></div>Cancellations</div>
+      <div class="sf5-nav-item"><div class="sf5-nav-dot green"></div>Refunds</div>
+      <div class="sf5-nav-item"><div class="sf5-nav-dot blue"></div>Flight owners</div>
+      <div class="sf5-nav-item"><div class="sf5-nav-dot"></div>All bookings</div>
+      <div class="sf5-nav-item"><div class="sf5-nav-dot"></div>Users</div>
+      <div style="margin-top:auto;padding-top:12px;border-top:0.5px solid var(--color-border-tertiary);">
+        <div class="sf5-nav-item"><div class="sf5-nav-dot red"></div>Sign out</div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);padding: 6px 10px;">Admin: superuser</div>
+      </div>
+    </div>
+
+    <div class="sf5-main">
+      <div class="sf5-topbar">
+        <div class="sf5-page-title">Admin dashboard</div>
+        <div class="sf5-admin-badge">Superadmin</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);">Today: 20 Mar 2026</div>
+      </div>
+
+      <div class="sf5-metrics">
+        <div class="sf5-metric">
+          <div class="sf5-metric-label">Active bookings</div>
+          <div class="sf5-metric-val">1,284</div>
+          <div class="sf5-metric-sub">+42 today</div>
+        </div>
+        <div class="sf5-metric">
+          <div class="sf5-metric-label">Pending refunds</div>
+          <div class="sf5-metric-val" style="color:#854F0B;">7</div>
+          <div class="sf5-metric-sub">Needs review</div>
+        </div>
+        <div class="sf5-metric">
+          <div class="sf5-metric-label">Active routes</div>
+          <div class="sf5-metric-val">38</div>
+          <div class="sf5-metric-sub">2 modified today</div>
+        </div>
+        <div class="sf5-metric">
+          <div class="sf5-metric-label">Cancellations</div>
+          <div class="sf5-metric-val" style="color:#A32D2D;">12</div>
+          <div class="sf5-metric-sub">This week</div>
+        </div>
+      </div>
+
+      <div class="sf5-panels">
+        <div class="sf5-panel">
+          <div class="sf5-panel-title">Route management <span class="sf5-panel-action">+ Add route</span></div>
+          <div class="sf5-table-row sf5-route-row" style="font-size:10px;color:var(--color-text-tertiary);">
+            <div>Route ID</div><div>Sector</div><div>Status</div><div></div>
+          </div>
+          <div class="sf5-table-row sf5-route-row">
+            <div style="font-weight:500;color:var(--color-text-primary);">RT-001</div>
+            <div>MAA → BOM</div>
+            <div><span class="sf5-tag active">Active</span></div>
+            <div><span class="sf5-edit-btn">Edit</span></div>
+          </div>
+          <div class="sf5-table-row sf5-route-row">
+            <div style="font-weight:500;color:var(--color-text-primary);">RT-002</div>
+            <div>BOM → DEL</div>
+            <div><span class="sf5-tag active">Active</span></div>
+            <div><span class="sf5-edit-btn">Edit</span></div>
+          </div>
+          <div class="sf5-table-row sf5-route-row">
+            <div style="font-weight:500;color:var(--color-text-primary);">RT-007</div>
+            <div>DEL → BLR</div>
+            <div><span class="sf5-tag modified">Modified</span></div>
+            <div><span class="sf5-edit-btn">Edit</span></div>
+          </div>
+          <div class="sf5-table-row sf5-route-row">
+            <div style="font-weight:500;color:var(--color-text-primary);">RT-013</div>
+            <div>MAA → HYD</div>
+            <div><span class="sf5-tag active">Active</span></div>
+            <div><span class="sf5-edit-btn">Edit</span></div>
+          </div>
+        </div>
+
+        <div class="sf5-panel">
+          <div class="sf5-panel-title">Pending refunds <span class="sf5-panel-action">View all</span></div>
+          <div class="sf5-table-row sf5-refund-row" style="font-size:10px;color:var(--color-text-tertiary);">
+            <div>Booking</div><div>Passenger</div><div>Amount</div><div></div>
+          </div>
+          <div class="sf5-table-row sf5-refund-row">
+            <div style="font-weight:500;color:var(--color-text-primary);">SF-4790</div>
+            <div>Priya R.</div>
+            <div>₹ 4,299</div>
+            <div><span class="sf5-approve-btn">Approve</span></div>
+          </div>
+          <div class="sf5-table-row sf5-refund-row">
+            <div style="font-weight:500;color:var(--color-text-primary);">SF-4611</div>
+            <div>Arjun M.</div>
+            <div>₹ 6,150</div>
+            <div><span class="sf5-approve-btn">Approve</span></div>
+          </div>
+          <div class="sf5-table-row sf5-refund-row">
+            <div style="font-weight:500;color:var(--color-text-primary);">SF-4388</div>
+            <div>Sita K.</div>
+            <div>₹ 3,490</div>
+            <div><span class="sf5-approve-btn">Approve</span></div>
+          </div>
+          <div style="margin-top:10px;padding:8px;background:#FAEEDA;border-radius:var(--border-radius-md);">
+            <div style="font-size:11px;color:#633806;">4 more refunds awaiting approval — total ₹ 22,180</div>
+          </div>
+        </div>
+
+        <div class="sf5-panel">
+          <div class="sf5-panel-title">Flight schedules <span class="sf5-panel-action">+ New schedule</span></div>
+          <div class="sf5-table-row sf5-schedule-row" style="font-size:10px;color:var(--color-text-tertiary);">
+            <div>Flight</div><div>Route</div><div>Departure</div><div></div>
+          </div>
+          <div class="sf5-table-row sf5-schedule-row">
+            <div style="font-weight:500;">6E 234</div>
+            <div>MAA → BOM</div>
+            <div>25 Mar 06:15</div>
+            <div><span class="sf5-edit-btn">Edit</span></div>
+          </div>
+          <div class="sf5-table-row sf5-schedule-row">
+            <div style="font-weight:500;">AI 657</div>
+            <div>BOM → DEL</div>
+            <div>26 Mar 09:30</div>
+            <div><span class="sf5-edit-btn">Edit</span></div>
+          </div>
+          <div class="sf5-table-row sf5-schedule-row">
+            <div style="font-weight:500;">SG 112</div>
+            <div>MAA → HYD</div>
+            <div>27 Mar 14:00</div>
+            <div><span class="sf5-edit-btn">Edit</span></div>
+          </div>
+        </div>
+
+        <div class="sf5-panel">
+          <div class="sf5-panel-title">Flight owner assignment <span class="sf5-panel-action">Assign</span></div>
+          <div class="sf5-owner-card">
+            <div class="sf5-owner-avatar">IG</div>
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">IndiGo Airlines</div>
+              <div style="font-size:11px;color:var(--color-text-secondary);">Routes: MAA-BOM, BOM-DEL</div>
+            </div>
+            <span class="sf5-tag active">Active</span>
+          </div>
+          <div class="sf5-owner-card">
+            <div class="sf5-owner-avatar" style="background:#C0DD97;color:#27500A;">AI</div>
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">Air India</div>
+              <div style="font-size:11px;color:var(--color-text-secondary);">Routes: BOM-DEL, DEL-BLR</div>
+            </div>
+            <span class="sf5-tag active">Active</span>
+          </div>
+          <div class="sf5-owner-card">
+            <div class="sf5-owner-avatar" style="background:#F5C4B3;color:#712B13;">SG</div>
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">SpiceJet</div>
+              <div style="font-size:11px;color:var(--color-text-secondary);">Routes: MAA-HYD</div>
+            </div>
+            <span class="sf5-tag pending">Review</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

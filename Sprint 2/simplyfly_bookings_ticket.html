@@ -1,0 +1,163 @@
+
+<style>
+.sf4 { background: var(--color-background-tertiary); border-radius: var(--border-radius-lg); padding: 16px; margin-bottom: 24px; }
+.sf4-label { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 10px; letter-spacing: 0.4px; }
+.sf4-nav { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); display: flex; align-items: center; padding: 0 20px; height: 48px; margin-bottom: 14px; gap: 0; }
+.sf4-logo { font-size: 15px; font-weight: 500; color: #185FA5; margin-right: 32px; }
+.sf4-logo span { color: #378ADD; }
+.sf4-navlink { font-size: 13px; color: var(--color-text-secondary); padding: 0 14px; height: 48px; display: flex; align-items: center; }
+.sf4-navlink.active { color: #185FA5; border-bottom: 2px solid #185FA5; font-weight: 500; }
+.sf4-avatar { width: 30px; height: 30px; border-radius: 50%; background: #B5D4F4; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #0C447C; margin-left: auto; }
+.sf4-body { display: grid; grid-template-columns: 1fr 360px; gap: 14px; }
+.sf4-list { display: flex; flex-direction: column; gap: 10px; }
+.sf4-booking-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px 18px; }
+.sf4-booking-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.sf4-booking-id { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); }
+.sf4-status { font-size: 11px; padding: 3px 10px; border-radius: 20px; margin-left: auto; }
+.sf4-status.confirmed { background: #EAF3DE; color: #27500A; }
+.sf4-status.cancelled { background: #FCEBEB; color: #791F1F; }
+.sf4-status.completed { background: var(--color-background-secondary); color: var(--color-text-secondary); }
+.sf4-flight-info { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.sf4-fi-label { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 2px; }
+.sf4-fi-val { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.sf4-actions { display: flex; gap: 8px; padding-top: 10px; border-top: 0.5px solid var(--color-border-tertiary); }
+.sf4-action-btn { padding: 5px 14px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); font-size: 12px; color: var(--color-text-secondary); }
+.sf4-action-btn.primary { background: #185FA5; border-color: #185FA5; color: #E6F1FB; }
+.sf4-action-btn.danger { border-color: #A32D2D; color: #A32D2D; }
+.sf4-ticket { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 0; overflow: hidden; }
+.sf4-ticket-top { background: #185FA5; padding: 16px 20px; }
+.sf4-ticket-body { padding: 16px 20px; }
+.sf4-ticket-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+.sf4-t-label { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 2px; }
+.sf4-t-val { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.sf4-barcode { background: var(--color-background-secondary); border-radius: var(--border-radius-md); height: 48px; margin: 12px 0; display: flex; align-items: center; justify-content: center; gap: 2px; }
+.sf4-bar { width: 2px; background: var(--color-text-secondary); border-radius: 1px; }
+.sf4-cancel-modal { background: var(--color-background-primary); border: 1.5px solid #E24B4A; border-radius: var(--border-radius-lg); padding: 20px; margin-top: 12px; }
+</style>
+
+<div class="sf4">
+  <div class="sf4-label">SCREEN 4 — MY BOOKINGS, E-TICKET & CANCELLATION</div>
+
+  <div class="sf4-nav">
+    <div class="sf4-logo">Simply<span>Fly</span></div>
+    <div class="sf4-navlink">Search</div>
+    <div class="sf4-navlink active">My bookings</div>
+    <div class="sf4-navlink">Baggage info</div>
+    <div class="sf4-avatar">JD</div>
+  </div>
+
+  <div class="sf4-body">
+    <div class="sf4-list">
+      <div style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Booking history</div>
+
+      <div class="sf4-booking-card" style="border-color:#378ADD;">
+        <div class="sf4-booking-header">
+          <div class="sf4-booking-id">Booking #SF20260325-4821</div>
+          <div class="sf4-status confirmed">Confirmed</div>
+        </div>
+        <div class="sf4-flight-info">
+          <div><div class="sf4-fi-label">Flight</div><div class="sf4-fi-val">6E 234 IndiGo</div></div>
+          <div><div class="sf4-fi-label">Route</div><div class="sf4-fi-val">MAA → BOM</div></div>
+          <div><div class="sf4-fi-label">Date</div><div class="sf4-fi-val">25 Mar 2026</div></div>
+          <div><div class="sf4-fi-label">Departs</div><div class="sf4-fi-val">06:15</div></div>
+          <div><div class="sf4-fi-label">Seat</div><div class="sf4-fi-val">10E</div></div>
+          <div><div class="sf4-fi-label">Total paid</div><div class="sf4-fi-val" style="color:#185FA5;">₹ 5,169</div></div>
+        </div>
+        <div class="sf4-actions">
+          <div class="sf4-action-btn primary">View ticket</div>
+          <div class="sf4-action-btn">Download PDF</div>
+          <div class="sf4-action-btn danger">Cancel booking</div>
+        </div>
+      </div>
+
+      <div class="sf4-booking-card">
+        <div class="sf4-booking-header">
+          <div class="sf4-booking-id">Booking #SF20260110-3302</div>
+          <div class="sf4-status completed">Completed</div>
+        </div>
+        <div class="sf4-flight-info">
+          <div><div class="sf4-fi-label">Flight</div><div class="sf4-fi-val">AI 657 Air India</div></div>
+          <div><div class="sf4-fi-label">Route</div><div class="sf4-fi-val">BOM → DEL</div></div>
+          <div><div class="sf4-fi-label">Date</div><div class="sf4-fi-val">10 Jan 2026</div></div>
+        </div>
+        <div class="sf4-actions">
+          <div class="sf4-action-btn">View ticket</div>
+          <div class="sf4-action-btn">Download PDF</div>
+        </div>
+      </div>
+
+      <div class="sf4-booking-card">
+        <div class="sf4-booking-header">
+          <div class="sf4-booking-id">Booking #SF20251205-1108</div>
+          <div class="sf4-status cancelled">Cancelled</div>
+        </div>
+        <div class="sf4-flight-info">
+          <div><div class="sf4-fi-label">Flight</div><div class="sf4-fi-val">SG 112 SpiceJet</div></div>
+          <div><div class="sf4-fi-label">Route</div><div class="sf4-fi-val">MAA → HYD</div></div>
+          <div><div class="sf4-fi-label">Date</div><div class="sf4-fi-val">5 Dec 2025</div></div>
+          <div><div class="sf4-fi-label">Refund status</div><div class="sf4-fi-val" style="color:#27500A;">Refunded</div></div>
+        </div>
+      </div>
+
+      <div class="sf4-cancel-modal">
+        <div style="font-size:13px;font-weight:500;color:#791F1F;margin-bottom:8px;">Cancel booking — #SF20260325-4821</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:12px;">Cancellation is eligible for a refund within 24 hours of departure. Your request will be reviewed by admin.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+          <div style="padding:10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);">
+            <div style="font-size:11px;color:var(--color-text-tertiary);">Amount paid</div>
+            <div style="font-size:14px;font-weight:500;color:var(--color-text-primary);">₹ 5,169</div>
+          </div>
+          <div style="padding:10px;background:#EAF3DE;border-radius:var(--border-radius-md);">
+            <div style="font-size:11px;color:#27500A;">Estimated refund</div>
+            <div style="font-size:14px;font-weight:500;color:#3B6D11;">₹ 4,650</div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-bottom:12px;">Cancellation fee: ₹ 519 · Refund processed in 5–7 business days after admin approval</div>
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;height:36px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--color-text-secondary);">Keep booking</div>
+          <div style="flex:1;height:36px;background:#A32D2D;border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#FCEBEB;">Confirm cancellation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sf4-ticket">
+      <div class="sf4-ticket-top">
+        <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-bottom:4px;">SimplyFly e-ticket</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:22px;font-weight:500;color:#fff;">MAA</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.7);">── ✈ ──</div>
+          <div style="font-size:22px;font-weight:500;color:#fff;">BOM</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.8);">Chennai</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.8);">Mumbai</div>
+        </div>
+      </div>
+      <div class="sf4-ticket-body">
+        <div class="sf4-ticket-row">
+          <div><div class="sf4-t-label">Passenger</div><div class="sf4-t-val">John Doe</div></div>
+          <div style="text-align:right;"><div class="sf4-t-label">Booking ref</div><div class="sf4-t-val" style="color:#185FA5;">SF-4821</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;">
+          <div><div class="sf4-t-label">Date</div><div class="sf4-t-val">25 Mar 2026</div></div>
+          <div><div class="sf4-t-label">Departs</div><div class="sf4-t-val">06:15</div></div>
+          <div><div class="sf4-t-label">Arrives</div><div class="sf4-t-val">08:10</div></div>
+          <div><div class="sf4-t-label">Flight</div><div class="sf4-t-val">6E 234</div></div>
+          <div><div class="sf4-t-label">Seat</div><div class="sf4-t-val">10E</div></div>
+          <div><div class="sf4-t-label">Class</div><div class="sf4-t-val">Economy</div></div>
+        </div>
+        <div style="border-top:0.5px dashed var(--color-border-secondary);margin-bottom:12px;"></div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px;">
+          <div><div class="sf4-t-label">Baggage</div><div class="sf4-t-val">7 kg cabin</div></div>
+          <div><div class="sf4-t-label">Gate closes</div><div class="sf4-t-val">05:45</div></div>
+        </div>
+        <div class="sf4-barcode">
+          <div style="display:flex;gap:2px;align-items:center;height:36px;">
+            <div class="sf4-bar" style="height:36px;"></div><div class="sf4-bar" style="height:26px;width:3px;"></div><div class="sf4-bar" style="height:36px;"></div><div class="sf4-bar" style="height:20px;"></div><div class="sf4-bar" style="height:36px;width:3px;"></div><div class="sf4-bar" style="height:28px;"></div><div class="sf4-bar" style="height:36px;"></div><div class="sf4-bar" style="height:22px;width:3px;"></div><div class="sf4-bar" style="height:36px;"></div><div class="sf4-bar" style="height:30px;"></div><div class="sf4-bar" style="height:36px;width:3px;"></div><div class="sf4-bar" style="height:24px;"></div><div class="sf4-bar" style="height:36px;"></div><div class="sf4-bar" style="height:28px;width:3px;"></div><div class="sf4-bar" style="height:36px;"></div><div class="sf4-bar" style="height:18px;"></div><div class="sf4-bar" style="height:36px;"></div><div class="sf4-bar" style="height:32px;width:3px;"></div><div class="sf4-bar" style="height:36px;"></div><div class="sf4-bar" style="height:24px;"></div>
+          </div>
+        </div>
+        <div style="font-size:10px;color:var(--color-text-tertiary);text-align:center;">SF20260325-4821 · IndiGo 6E 234</div>
+      </div>
+    </div>
+  </div>
+</div>

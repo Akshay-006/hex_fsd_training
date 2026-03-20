@@ -1,0 +1,204 @@
+
+<style>
+.sf2 { background: var(--color-background-tertiary); border-radius: var(--border-radius-lg); padding: 16px; margin-bottom: 24px; }
+.sf2-label { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 10px; letter-spacing: 0.4px; }
+.sf2-nav { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); display: flex; align-items: center; padding: 0 20px; height: 48px; margin-bottom: 14px; gap: 0; }
+.sf2-logo { font-size: 15px; font-weight: 500; color: #185FA5; margin-right: 32px; }
+.sf2-logo span { color: #378ADD; }
+.sf2-navlink { font-size: 13px; color: var(--color-text-secondary); padding: 0 14px; height: 48px; display: flex; align-items: center; border-bottom: 2px solid transparent; }
+.sf2-navlink.active { color: #185FA5; border-bottom: 2px solid #185FA5; font-weight: 500; }
+.sf2-navright { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.sf2-avatar { width: 30px; height: 30px; border-radius: 50%; background: #B5D4F4; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #0C447C; }
+.sf2-search-panel { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 20px 24px; margin-bottom: 14px; }
+.sf2-trip-tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+.sf2-trip-tab { padding: 5px 14px; border-radius: 20px; font-size: 12px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); }
+.sf2-trip-tab.active { background: #185FA5; border-color: #185FA5; color: #E6F1FB; }
+.sf2-fields { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto; gap: 10px; align-items: end; }
+.sf2-field-group { display: flex; flex-direction: column; gap: 4px; }
+.sf2-field-label { font-size: 11px; color: var(--color-text-secondary); }
+.sf2-input { height: 42px; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 0 12px; font-size: 13px; color: var(--color-text-primary); display: flex; align-items: center; }
+.sf2-input-hint { font-size: 11px; color: var(--color-text-tertiary); margin-top: 2px; }
+.sf2-search-btn { height: 42px; padding: 0 24px; background: #185FA5; border-radius: var(--border-radius-md); font-size: 13px; font-weight: 500; color: #E6F1FB; display: flex; align-items: center; white-space: nowrap; }
+.sf2-body { display: grid; grid-template-columns: 220px 1fr; gap: 14px; }
+.sf2-filters { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px; }
+.sf2-filter-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 12px; }
+.sf2-filter-section { margin-bottom: 16px; border-bottom: 0.5px solid var(--color-border-tertiary); padding-bottom: 14px; }
+.sf2-filter-section:last-child { border-bottom: none; margin-bottom: 0; }
+.sf2-filter-head { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 8px; }
+.sf2-check-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.sf2-check { width: 13px; height: 13px; border: 0.5px solid var(--color-border-secondary); border-radius: 3px; flex-shrink: 0; }
+.sf2-check.checked { background: #185FA5; border-color: #185FA5; }
+.sf2-check-text { font-size: 12px; color: var(--color-text-secondary); flex: 1; }
+.sf2-check-count { font-size: 11px; color: var(--color-text-tertiary); }
+.sf2-range { width: 100%; height: 4px; background: var(--color-border-tertiary); border-radius: 2px; margin: 4px 0 6px; position: relative; }
+.sf2-range-fill { width: 60%; height: 4px; background: #185FA5; border-radius: 2px; }
+.sf2-results { display: flex; flex-direction: column; gap: 10px; }
+.sf2-results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.sf2-results-count { font-size: 13px; color: var(--color-text-secondary); }
+.sf2-sort { font-size: 12px; color: #185FA5; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 4px 10px; }
+.sf2-flight-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px 20px; }
+.sf2-flight-card.featured { border-color: #378ADD; border-width: 1.5px; }
+.sf2-flight-row { display: grid; grid-template-columns: 120px 1fr 100px 100px 110px; gap: 12px; align-items: center; }
+.sf2-airline { font-size: 12px; color: var(--color-text-secondary); }
+.sf2-airline-code { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.sf2-time { font-size: 16px; font-weight: 500; color: var(--color-text-primary); }
+.sf2-airport { font-size: 11px; color: var(--color-text-secondary); }
+.sf2-route { display: flex; align-items: center; gap: 8px; }
+.sf2-route-line { flex: 1; height: 0.5px; background: var(--color-border-secondary); position: relative; }
+.sf2-route-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--color-border-secondary); flex-shrink: 0; }
+.sf2-duration { font-size: 11px; color: var(--color-text-tertiary); text-align: center; }
+.sf2-stops { font-size: 11px; color: var(--color-text-tertiary); text-align: center; margin-top: 2px; }
+.sf2-price { font-size: 18px; font-weight: 500; color: #185FA5; }
+.sf2-per { font-size: 11px; color: var(--color-text-tertiary); }
+.sf2-book-btn { height: 34px; background: #185FA5; border-radius: var(--border-radius-md); font-size: 12px; font-weight: 500; color: #E6F1FB; display: flex; align-items: center; justify-content: center; }
+.sf2-badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px; }
+.sf2-badge.cheapest { background: #EAF3DE; color: #27500A; }
+.sf2-badge.fastest { background: #E6F1FB; color: #0C447C; }
+</style>
+
+<div class="sf2">
+  <div class="sf2-label">SCREEN 2 — USER DASHBOARD: FLIGHT SEARCH & RESULTS</div>
+
+  <div class="sf2-nav">
+    <div class="sf2-logo">Simply<span>Fly</span></div>
+    <div class="sf2-navlink active">Search</div>
+    <div class="sf2-navlink">My bookings</div>
+    <div class="sf2-navlink">Baggage info</div>
+    <div class="sf2-navlink">Help</div>
+    <div class="sf2-navright">
+      <div style="font-size:12px;color:var(--color-text-secondary);">John D.</div>
+      <div class="sf2-avatar">JD</div>
+    </div>
+  </div>
+
+  <div class="sf2-search-panel">
+    <div class="sf2-trip-tabs">
+      <div class="sf2-trip-tab active">One way</div>
+      <div class="sf2-trip-tab">Round trip</div>
+      <div class="sf2-trip-tab">Multi-city</div>
+    </div>
+    <div class="sf2-fields">
+      <div class="sf2-field-group">
+        <div class="sf2-field-label">From</div>
+        <div class="sf2-input">
+          <div>
+            <div style="font-weight:500;">Chennai (MAA)</div>
+            <div style="font-size:11px;color:var(--color-text-tertiary);">Chennai Intl. Airport</div>
+          </div>
+        </div>
+      </div>
+      <div class="sf2-field-group">
+        <div class="sf2-field-label">To</div>
+        <div class="sf2-input">
+          <div>
+            <div style="font-weight:500;">Mumbai (BOM)</div>
+            <div style="font-size:11px;color:var(--color-text-tertiary);">Chhatrapati Shivaji Intl.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sf2-field-group">
+        <div class="sf2-field-label">Departure date</div>
+        <div class="sf2-input">25 Mar 2026</div>
+      </div>
+      <div class="sf2-field-group">
+        <div class="sf2-field-label">Passengers</div>
+        <div class="sf2-input">1 Adult, Economy</div>
+      </div>
+      <div class="sf2-search-btn">Search flights</div>
+    </div>
+  </div>
+
+  <div class="sf2-body">
+    <div class="sf2-filters">
+      <div class="sf2-filter-title">Filters</div>
+
+      <div class="sf2-filter-section">
+        <div class="sf2-filter-head">Stops</div>
+        <div class="sf2-check-row"><div class="sf2-check checked"></div><div class="sf2-check-text">Non-stop</div><div class="sf2-check-count">12</div></div>
+        <div class="sf2-check-row"><div class="sf2-check checked"></div><div class="sf2-check-text">1 stop</div><div class="sf2-check-count">8</div></div>
+        <div class="sf2-check-row"><div class="sf2-check"></div><div class="sf2-check-text">2+ stops</div><div class="sf2-check-count">3</div></div>
+      </div>
+
+      <div class="sf2-filter-section">
+        <div class="sf2-filter-head">Price range</div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--color-text-tertiary);margin-bottom:4px;"><span>₹ 2,500</span><span>₹ 18,000</span></div>
+        <div class="sf2-range"><div class="sf2-range-fill"></div></div>
+      </div>
+
+      <div class="sf2-filter-section">
+        <div class="sf2-filter-head">Airlines</div>
+        <div class="sf2-check-row"><div class="sf2-check checked"></div><div class="sf2-check-text">IndiGo</div></div>
+        <div class="sf2-check-row"><div class="sf2-check checked"></div><div class="sf2-check-text">Air India</div></div>
+        <div class="sf2-check-row"><div class="sf2-check"></div><div class="sf2-check-text">SpiceJet</div></div>
+        <div class="sf2-check-row"><div class="sf2-check"></div><div class="sf2-check-text">Vistara</div></div>
+      </div>
+
+      <div class="sf2-filter-section">
+        <div class="sf2-filter-head">Departure time</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <div style="padding:5px 0;text-align:center;font-size:11px;border:0.5px solid #185FA5;color:#0C447C;border-radius:6px;background:#E6F1FB;">Morning</div>
+          <div style="padding:5px 0;text-align:center;font-size:11px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);border-radius:6px;">Afternoon</div>
+          <div style="padding:5px 0;text-align:center;font-size:11px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);border-radius:6px;">Evening</div>
+          <div style="padding:5px 0;text-align:center;font-size:11px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);border-radius:6px;">Night</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sf2-results">
+      <div class="sf2-results-header">
+        <div class="sf2-results-count">23 flights found — Chennai to Mumbai, 25 Mar</div>
+        <div class="sf2-sort">Sort: Cheapest first ▾</div>
+      </div>
+
+      <div class="sf2-flight-card featured">
+        <div style="margin-bottom:10px;"><span class="sf2-badge cheapest">Cheapest</span></div>
+        <div class="sf2-flight-row">
+          <div><div class="sf2-airline-code">6E 234</div><div class="sf2-airline">IndiGo</div></div>
+          <div class="sf2-route">
+            <div><div class="sf2-time">06:15</div><div class="sf2-airport">MAA</div></div>
+            <div class="sf2-route-dot"></div>
+            <div class="sf2-route-line"></div>
+            <div class="sf2-route-dot"></div>
+            <div><div class="sf2-time">08:10</div><div class="sf2-airport">BOM</div></div>
+          </div>
+          <div><div class="sf2-duration">1h 55m</div><div class="sf2-stops">Non-stop</div></div>
+          <div><div class="sf2-price">₹ 4,299</div><div class="sf2-per">per person</div></div>
+          <div class="sf2-book-btn">Select seats</div>
+        </div>
+      </div>
+
+      <div class="sf2-flight-card">
+        <div style="margin-bottom:10px;"><span class="sf2-badge fastest">Fastest</span></div>
+        <div class="sf2-flight-row">
+          <div><div class="sf2-airline-code">AI 657</div><div class="sf2-airline">Air India</div></div>
+          <div class="sf2-route">
+            <div><div class="sf2-time">09:30</div><div class="sf2-airport">MAA</div></div>
+            <div class="sf2-route-dot"></div>
+            <div class="sf2-route-line"></div>
+            <div class="sf2-route-dot"></div>
+            <div><div class="sf2-time">11:20</div><div class="sf2-airport">BOM</div></div>
+          </div>
+          <div><div class="sf2-duration">1h 50m</div><div class="sf2-stops">Non-stop</div></div>
+          <div><div class="sf2-price">₹ 5,850</div><div class="sf2-per">per person</div></div>
+          <div class="sf2-book-btn">Select seats</div>
+        </div>
+      </div>
+
+      <div class="sf2-flight-card">
+        <div class="sf2-flight-row">
+          <div><div class="sf2-airline-code">SG 112</div><div class="sf2-airline">SpiceJet</div></div>
+          <div class="sf2-route">
+            <div><div class="sf2-time">14:00</div><div class="sf2-airport">MAA</div></div>
+            <div class="sf2-route-dot"></div>
+            <div class="sf2-route-line"></div>
+            <div class="sf2-route-dot"></div>
+            <div><div class="sf2-time">17:45</div><div class="sf2-airport">BOM</div></div>
+          </div>
+          <div><div class="sf2-duration">3h 45m</div><div class="sf2-stops" style="color:#BA7517;">1 stop · HYD</div></div>
+          <div><div class="sf2-price">₹ 3,490</div><div class="sf2-per">per person</div></div>
+          <div class="sf2-book-btn">Select seats</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

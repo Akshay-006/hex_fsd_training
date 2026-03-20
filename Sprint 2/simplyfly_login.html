@@ -1,0 +1,114 @@
+
+<style>
+.sf-screen { background: var(--color-background-tertiary); border-radius: var(--border-radius-lg); padding: 16px; margin-bottom: 24px; }
+.sf-navbar { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); display: flex; align-items: center; padding: 0 20px; height: 48px; margin-bottom: 16px; gap: 32px; }
+.sf-logo { font-size: 15px; font-weight: 500; color: #185FA5; letter-spacing: -0.3px; margin-right: auto; }
+.sf-logo span { color: #378ADD; }
+.sf-nav-link { font-size: 13px; color: var(--color-text-secondary); cursor: pointer; }
+.sf-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 28px 32px; }
+.sf-field-label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px; }
+.sf-field { width: 100%; height: 36px; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); box-sizing: border-box; padding: 0 12px; font-size: 13px; color: var(--color-text-tertiary); display: flex; align-items: center; margin-bottom: 14px; }
+.sf-btn-primary { width: 100%; height: 38px; background: #185FA5; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #E6F1FB; cursor: pointer; margin-top: 4px; }
+.sf-btn-warn { width: 100%; height: 38px; background: #854F0B; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #FAEEDA; cursor: pointer; margin-top: 4px; }
+.sf-tab-strip { display: flex; background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 3px; margin-bottom: 22px; }
+.sf-tab-active { flex: 1; height: 30px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.sf-tab-inactive { flex: 1; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--color-text-secondary); }
+.sf-divider { display: flex; align-items: center; gap: 10px; margin: 14px 0; }
+.sf-divider-line { flex: 1; height: 0.5px; background: var(--color-border-tertiary); }
+.sf-divider span { font-size: 12px; color: var(--color-text-tertiary); }
+.sf-notice { background: #FAEEDA; border: 0.5px solid #BA7517; border-radius: var(--border-radius-md); padding: 8px 12px; font-size: 12px; color: #633806; margin-top: 14px; }
+.sf-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.sf-screen-label { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 10px; letter-spacing: 0.4px; }
+.sf-link { font-size: 12px; color: #185FA5; text-align: center; margin-top: 14px; }
+.sf-checkbox-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.sf-checkbox { width: 14px; height: 14px; border: 0.5px solid var(--color-border-secondary); border-radius: 3px; flex-shrink: 0; }
+.sf-check-label { font-size: 12px; color: var(--color-text-secondary); flex: 1; }
+.sf-check-link { font-size: 12px; color: #185FA5; }
+</style>
+
+<div class="sf-screen">
+  <div class="sf-screen-label">SCREEN 1 — LOGIN / ROLE SELECTION (RBAC)</div>
+
+  <div class="sf-navbar">
+    <div class="sf-logo">Simply<span>Fly</span></div>
+    <div class="sf-nav-link">Home</div>
+    <div class="sf-nav-link">About</div>
+    <div class="sf-nav-link">Help</div>
+  </div>
+
+  <div class="sf-two-col">
+    <div>
+      <div style="font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:10px;">Passenger login</div>
+      <div class="sf-card">
+        <div style="font-size:18px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Welcome back</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:18px;">Sign in to manage your flights</div>
+
+        <div class="sf-tab-strip">
+          <div class="sf-tab-active">Passenger</div>
+          <div class="sf-tab-inactive">Admin</div>
+        </div>
+
+        <div class="sf-field-label">Email address</div>
+        <div class="sf-field">passenger@email.com</div>
+
+        <div class="sf-field-label">Password</div>
+        <div class="sf-field">••••••••••</div>
+
+        <div class="sf-checkbox-row">
+          <div class="sf-checkbox"></div>
+          <div class="sf-check-label">Remember me</div>
+          <div class="sf-check-link">Forgot password?</div>
+        </div>
+
+        <div class="sf-btn-primary">Sign in</div>
+
+        <div class="sf-divider"><div class="sf-divider-line"></div><span>or continue with</span><div class="sf-divider-line"></div></div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="height:34px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--color-text-secondary);">Google</div>
+          <div style="height:34px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--color-text-secondary);">Facebook</div>
+        </div>
+
+        <div class="sf-link">Don't have an account? <span style="color:#185FA5;font-weight:500;">Create one</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:10px;">Admin login</div>
+      <div class="sf-card">
+        <div style="font-size:18px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Admin portal</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:18px;">Restricted access — credentials required</div>
+
+        <div class="sf-tab-strip">
+          <div class="sf-tab-inactive">Passenger</div>
+          <div class="sf-tab-active" style="background:#FAEEDA;border-color:#BA7517;color:#412402;">Admin</div>
+        </div>
+
+        <div class="sf-field-label">Admin ID</div>
+        <div class="sf-field">admin@simplyfly.com</div>
+
+        <div class="sf-field-label">Password</div>
+        <div class="sf-field">••••••••••</div>
+
+        <div class="sf-field-label">Two-factor code</div>
+        <div class="sf-field" style="letter-spacing:4px;">_ _ _ _ _ _</div>
+
+        <div class="sf-btn-warn">Secure sign in</div>
+
+        <div class="sf-notice">
+          Admin sessions are logged and audited. Unauthorized access attempts are reported.
+        </div>
+
+        <div style="margin-top:14px;padding:10px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);">
+          <div style="font-size:11px;color:var(--color-text-tertiary);margin-bottom:4px;">Role-based access control</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="font-size:11px;background:#E6F1FB;color:#0C447C;padding:2px 8px;border-radius:4px;">Routes</span>
+            <span style="font-size:11px;background:#E6F1FB;color:#0C447C;padding:2px 8px;border-radius:4px;">Schedules</span>
+            <span style="font-size:11px;background:#E6F1FB;color:#0C447C;padding:2px 8px;border-radius:4px;">Refunds</span>
+            <span style="font-size:11px;background:#E6F1FB;color:#0C447C;padding:2px 8px;border-radius:4px;">Flight owners</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
