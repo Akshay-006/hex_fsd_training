@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UserList from "./components/user-list.jsx";
 import AddUser from "./components/add-user.jsx";
 
+//git commit ref added to highlight main components
+
 const routes = createBrowserRouter([
   {
     path: "",

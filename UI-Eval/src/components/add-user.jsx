@@ -13,6 +13,8 @@ function AddUser() {
   const [successMsg, setSuccessMsg] = useState(undefined);
   const [errMsg, setErrMsg] = useState(undefined);
 
+  //git commit ref added to highlight main components
+
   const navigate = useNavigate();
 
   const postUser = async (e) => {

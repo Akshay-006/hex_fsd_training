@@ -6,6 +6,8 @@ function UserList() {
   const [users, setUsers] = useState([]);
   const api = "https://jsonplaceholder.typicode.com/users";
 
+  //git commit ref added to highlight main components
+
   useEffect(() => {
     const getUsers = async () => {
       const response = await axios.get(api);
@@ -35,7 +37,7 @@ function UserList() {
               <h3>Users</h3>
             </div>
             <div className="card-body">
-              <table class="table">
+              <table className="table">
                 <thead>
                   <tr>
                     <th scope="col">Id</th>

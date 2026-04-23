@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 
 function Home() {
+  //git commit ref added to highlight main components
   return (
     <div className="container">
       <div className="row">

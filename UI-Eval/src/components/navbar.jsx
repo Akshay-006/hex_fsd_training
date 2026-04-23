@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  //git commit ref added to highlight main components
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
