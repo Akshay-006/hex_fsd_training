@@ -4,5 +4,6 @@ public enum AmountStatus {
     PAID,
     YET_TO_BE_CREDITED,
     REFUNDED,
-    YET_TO_BE_REFUNDED
+    YET_TO_BE_REFUNDED,
+    NO_REFUND
 }

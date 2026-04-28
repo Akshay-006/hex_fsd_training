@@ -7,13 +7,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record SearchByRouteSeatDto(
-        String fromLocation,
-        String fromAirport,
-        String toLocation,
-        String toAirport,
-        LocalDateTime departureDate,
+        String fromCode,
+        String toCode,
+        LocalDate departureDate,
         int neededSeats,
-        PassengerAge passengerAge,
         SeatClass seatClass
 
 ) {

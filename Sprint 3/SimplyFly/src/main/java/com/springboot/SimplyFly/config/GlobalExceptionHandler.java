@@ -48,6 +48,18 @@ public class GlobalExceptionHandler {
 
     }
 
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<?> handleRuntimeException(
+            RuntimeException e
+    ){
+        System.out.println("called...");
+        Map<String,Object> map = new HashMap<>();
+        map.put("message", e.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(map);
+    }
+
 
 
 

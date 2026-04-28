@@ -5,8 +5,10 @@ import com.springboot.SimplyFly.enums.BookingStatus;
 import com.springboot.SimplyFly.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "flight_passenger")
@@ -41,6 +43,10 @@ public class FlightPassenger {
 
     @ManyToOne
     Flight flight;
+
+    @CreationTimestamp
+    @Column(name = "booking_date")
+    private LocalDateTime bookingDate;
 
 
 

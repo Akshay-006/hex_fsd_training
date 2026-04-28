@@ -24,7 +24,7 @@ public class CoPassengerService {
         return coPassenger;
     }
 
-    public void addCoPassenger(CoPassengerDto coPassengerDto, String username) {
+    public CoPassenger addCoPassenger(CoPassengerDto coPassengerDto, String username) {
         Passenger passenger = passengerService.getPassengerByUsername(username);
         CoPassenger coPassenger = new CoPassenger();
 
@@ -32,7 +32,7 @@ public class CoPassengerService {
         coPassenger.setAge(coPassengerDto.age());
         coPassenger.setPassenger(passenger);
 
-        coPassengerRepository.save(coPassenger);
+        return coPassengerRepository.save(coPassenger);
 
     }
 }

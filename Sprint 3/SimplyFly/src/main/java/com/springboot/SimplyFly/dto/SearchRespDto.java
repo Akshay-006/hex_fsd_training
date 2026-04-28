@@ -1,13 +1,20 @@
 package com.springboot.SimplyFly.dto;
 
+import com.springboot.SimplyFly.enums.FlightDesc;
+
+import java.math.BigDecimal;
+
 public record SearchRespDto(
-        String flightNumber,
-        String flightName,
-        String fromLocation,
-        String toLocation,
+        long id,
+        String code,
+        String airline,
+        String depTime,
+        String arrTime,
+        String depAirport,
+        String arrAirport,
+        String duration,
         String stops,
-        int durHrs,
-        int durMins
+        FlightDesc flightDesc
 
 ) {
 }

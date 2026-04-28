@@ -35,6 +35,7 @@ public class SeatService {
                 .toList();
     }
 
+    // Comeback when filter
     public List<SearchRespDto> getFlightsByFilter(String stops, String deptime, String airline, String minfare, String maxfare) {
         if (stops.isEmpty()) stops=null;
 
@@ -67,11 +68,10 @@ public class SeatService {
     public SearchRespPageDto getFlightsForBooking(SearchByRouteSeatDto searchByRouteSeatDto, int page, int size) {
         Pageable pageable = PageRequest.of(page,size);
         Page<Flight> flightList = seatRepository.getFlightsForBooking(
-                searchByRouteSeatDto.fromAirport(),
-                searchByRouteSeatDto.toAirport(),
+                searchByRouteSeatDto.fromCode(),
+                searchByRouteSeatDto.toCode(),
                 searchByRouteSeatDto.departureDate(),
                 searchByRouteSeatDto.neededSeats(),
-                searchByRouteSeatDto.passengerAge(),
                 searchByRouteSeatDto.seatClass(),
                 pageable
         );
@@ -93,24 +93,32 @@ public class SeatService {
 
     }
 
-    @Transactional
-    public void bookSeats(SeatBookingDto seatBookingDto) {
-        List<Long> list = seatBookingDto.seatsId();
-
-        Passenger passenger = passengerRepository.findById(seatBookingDto.pid()).orElseThrow(
-                () -> new ResourceNotFoundException("Passenger Id not found")
+    public SearchResultPageDto getFlightsForBookingv2(SearchByRouteSeatDto searchByRouteSeatDto, int page, int size) {
+        Pageable pageable = PageRequest.of(page,size);
+        Page<FlightSearchResultDto> flightList = seatRepository.getFlightsForBookingv2(
+                searchByRouteSeatDto.fromCode(),
+                searchByRouteSeatDto.toCode(),
+                searchByRouteSeatDto.departureDate(),
+                searchByRouteSeatDto.neededSeats(),
+                searchByRouteSeatDto.seatClass(),
+                pageable
         );
-        for (Long aLong : list) {
 
-            Seat seat = seatRepository.findById(aLong).orElseThrow(() -> new ResourceNotFoundException("Seat Id INVALID!!"));
-            seat.setAvailable(false);
 
-            seat.setPassenger(passenger);
-            seatRepository.save(seat);
 
-        }
+        int totalPages = flightList.getTotalPages();
+        long totalElements = flightList.getTotalElements();
+
+        return new SearchResultPageDto(
+                flightList.toList(),
+                totalPages,
+                totalElements
+        );
+
 
     }
+
+
 
 
     public Seat getseatById(long id){
@@ -129,4 +137,11 @@ public class SeatService {
 
     }
 
+    public List<SeatResponseDto> getSeatsByFlightId(long flightId) {
+        List<Seat> seatList = seatRepository.findByFlightId(flightId);
+
+        return seatList.stream()
+                .map(SeatMapper :: mapToSeatDto)
+                .toList();
+    }
 }

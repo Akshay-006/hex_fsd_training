@@ -26,6 +26,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/search")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class FlightController {
 
     private final FlightService flightService;
@@ -33,13 +34,13 @@ public class FlightController {
     private final SeatService seatService;
     private final CoPassengerService coPassengerService;
 
-    @GetMapping("/routes")
-    public RoutesRespDto getRouteDetails(@RequestBody SearchByRouteSeatDto searchByRouteSeatDto,
-    @RequestParam(value = "page",required = false,defaultValue = "0") int page,
-    @RequestParam(value = "size",required = false,defaultValue = "5") int size
-        ){
-        return routeService.getRouteDetails(searchByRouteSeatDto,page,size);
-    }
+//    @GetMapping("/routes")
+//    public RoutesRespDto getRouteDetails(@RequestBody SearchByRouteSeatDto searchByRouteSeatDto,
+//    @RequestParam(value = "page",required = false,defaultValue = "0") int page,
+//    @RequestParam(value = "size",required = false,defaultValue = "5") int size
+//        ){
+//        return routeService.getRouteDetails(searchByRouteSeatDto,page,size);
+//    }
 
     @GetMapping("/flights/{routeId}")
     public FlightRespPageDto getFlightsByRouteId(@PathVariable long routeId,
@@ -66,18 +67,49 @@ public class FlightController {
         return seatService.getFlightsByFilter(stops,deptime,airline,minfare,maxfare);
     }
 
-    @GetMapping("/flights")
+    @PostMapping("/flights")
     public SearchRespPageDto getFlightsForBooking(@RequestBody SearchByRouteSeatDto searchByRouteSeatDto,
                                                   @RequestParam(value = "page",required = false,defaultValue = "0") int page,
                                                     @RequestParam(value = "size",required = false,defaultValue = "5") int size){
         return seatService.getFlightsForBooking(searchByRouteSeatDto,page, size);
     }
 
+//    @PostMapping("/flights/v1")
+//    public SearchRespPageDto getFlightsForBookingv1(@RequestBody SearchByRouteSeatDto searchByRouteSeatDto,
+//                                                  @RequestParam(value = "page",required = false,defaultValue = "0") int page,
+//                                                  @RequestParam(value = "size",required = false,defaultValue = "5") int size){
+//        return seatService.getFlightsForBookingv1(searchByRouteSeatDto,page, size);
+//    }
+
+    @PostMapping("/flights/v2")
+    public SearchResultPageDto getFlightsForBookingv2(@RequestBody SearchByRouteSeatDto searchByRouteSeatDto,
+                                                  @RequestParam(value = "page",required = false,defaultValue = "0") int page,
+                                                  @RequestParam(value = "size",required = false,defaultValue = "5") int size){
+        return seatService.getFlightsForBookingv2(searchByRouteSeatDto,page, size);
+    }
+    
     @PostMapping("/add/copassenger")
     public ResponseEntity<?> addCoPassenger(@RequestBody CoPassengerDto coPassengerDto, Principal principal){
         coPassengerService.addCoPassenger(coPassengerDto,principal.getName());
         return ResponseEntity.status(HttpStatus.CREATED).build();
 
+    }
+
+    @GetMapping("/owner/flights")
+    public List<FlightResponseDto> getFlightsByOwner(Principal principal){
+        return flightService.getFlightsByOwner(principal.getName());
+    }
+
+    @PutMapping("/owner/flights/{flightId}/route")
+    public ResponseEntity<?> updateRoutev2(@PathVariable Long flightId, @RequestBody UpdRouteDto routeDto, Principal principal ){
+        routeService.updateRoutev2(flightId,routeDto,principal.getName());
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PutMapping("/owner/flights/{flightId}/complete")
+    public ResponseEntity<?> markCompleted(@PathVariable long flightId, Principal principal){
+        flightService.markCompleted(flightId,principal.getName());
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 

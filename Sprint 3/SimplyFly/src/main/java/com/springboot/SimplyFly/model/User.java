@@ -42,6 +42,9 @@ public class User implements UserDetails {
         @UpdateTimestamp
         private Instant updatedAt;
 
+        @Column(name = "is_active")
+        private boolean isActive=true;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority sga = new SimpleGrantedAuthority(role.toString());

@@ -27,6 +27,12 @@ public interface FlightRepository extends JpaRepository<Flight,Long> {
     @Query("Select f from Flight f where f.route.id = ?1")
     Page<Flight> getFlightsByRouteId(long routeId, Pageable pageable);
 
+    @Query("Select f from Flight f where f.owner.userName = ?1")
+    List<Flight> findByOwner(String name);
+
+    @Query("Select f from Flight f order by f.id desc")
+    Page<Flight> findAllByOrder(Pageable pageable);
+
     /*@Query("""
         select f from Flight f where
                 (?1 is null or f.route.stops=?1) and 

@@ -20,4 +20,7 @@ public interface RouteRepository extends JpaRepository<Route,Long> {
              r.departureDate = ?5
      """)
     Page<Route> getRouteWithDetails(String s, String s1, String location, String airport, LocalDateTime localDate, Pageable pageable);
+
+    @Query("Select r from Route r order by r.id desc")
+    Page<Route> findAllByOrder(Pageable pageable);
 }

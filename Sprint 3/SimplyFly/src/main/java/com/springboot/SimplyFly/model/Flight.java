@@ -1,11 +1,9 @@
 package com.springboot.SimplyFly.model;
 
 import com.springboot.SimplyFly.enums.FlightDesc;
+import com.springboot.SimplyFly.enums.FlightStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 
@@ -16,6 +14,7 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Flight {
 
     @Id
@@ -40,8 +39,15 @@ public class Flight {
     @Enumerated(EnumType.STRING)
     private FlightDesc flightDesc;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private FlightStatus status = FlightStatus.SCHEDULED;
+
     @ManyToOne
     private Route route;
+
+    @ManyToOne
+    private User owner;
 
 
 
