@@ -1,0 +1,497 @@
+/* ── SimplyFly Flight Owner Dashboard — Light Mode ───────────────────────── */
+
+.fo-page {
+  min-height: 100vh;
+  background: #F5F6F8;
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+  color: #1a1a2e;
+  display: flex;
+}
+
+/* ── Sidebar ───────────────────────────────────────────────────────────────── */
+
+.fo-sidebar {
+  width: 220px;
+  background: #ffffff;
+  border-right: 1px solid #E8ECF0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.fo-sidebar__logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #185FA5;
+  letter-spacing: -0.5px;
+  padding: 0 20px;
+  margin-bottom: 4px;
+}
+
+.fo-sidebar__logo span { color: #378ADD; }
+
+.fo-sidebar__role {
+  font-size: 11px;
+  font-weight: 600;
+  color: #854F0B;
+  background: #FAEEDA;
+  padding: 2px 10px;
+  border-radius: 4px;
+  margin: 0 20px 24px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.fo-sidebar__section {
+  font-size: 10px;
+  font-weight: 700;
+  color: #9CA3AF;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 0 20px;
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+
+.fo-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px;
+  font-size: 13px;
+  color: #6B7280;
+  cursor: pointer;
+  transition: all 0.15s;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+}
+
+.fo-nav-item:hover {
+  background: #F5F6F8;
+  color: #185FA5;
+}
+
+.fo-nav-item--active {
+  background: #EFF6FF;
+  color: #185FA5;
+  font-weight: 600;
+  border-left: 3px solid #185FA5;
+}
+
+.fo-nav-item__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fo-sidebar__bottom {
+  margin-top: auto;
+  border-top: 1px solid #F3F4F6;
+  padding-top: 12px;
+}
+
+.fo-sidebar__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+}
+
+.fo-sidebar__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #B5D4F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0C447C;
+  flex-shrink: 0;
+}
+
+.fo-sidebar__username {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.fo-sidebar__logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px;
+  font-size: 13px;
+  color: #EF4444;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: none;
+  background: none;
+  width: 100%;
+  font-family: inherit;
+}
+
+.fo-sidebar__logout:hover { background: #FEF2F2; }
+
+/* ── Main area ─────────────────────────────────────────────────────────────── */
+
+.fo-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.fo-topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #E8ECF0;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  height: 56px;
+  gap: 12px;
+}
+
+.fo-topbar__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  flex: 1;
+}
+
+.fo-topbar__date {
+  font-size: 12px;
+  color: #9CA3AF;
+}
+
+.fo-content {
+  padding: 28px 32px 60px;
+  overflow-y: auto;
+}
+
+/* ── Metric cards ──────────────────────────────────────────────────────────── */
+
+.fo-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.fo-metric {
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.fo-metric__label {
+  font-size: 12px;
+  color: #9CA3AF;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.fo-metric__val {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.fo-metric__sub {
+  font-size: 11px;
+  color: #9CA3AF;
+}
+
+.fo-metric--pending .fo-metric__val { color: #854F0B; }
+.fo-metric--cancelled .fo-metric__val { color: #DC2626; }
+.fo-metric--revenue .fo-metric__val { color: #185FA5; }
+
+/* ── Section header ────────────────────────────────────────────────────────── */
+
+.fo-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.fo-section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.fo-section-sub {
+  font-size: 13px;
+  color: #9CA3AF;
+}
+
+/* ── Cancellation table ────────────────────────────────────────────────────── */
+
+.fo-table-wrap {
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  margin-bottom: 28px;
+}
+
+.fo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.fo-table th {
+  background: #F9FAFB;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9CA3AF;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.fo-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #F9FAFB;
+  color: #374151;
+  vertical-align: middle;
+}
+
+.fo-table tr:last-child td { border-bottom: none; }
+
+.fo-table tr:hover td { background: #FAFAFA; }
+
+.fo-table__primary {
+  font-weight: 600;
+  color: #111827;
+}
+
+.fo-table__secondary {
+  font-size: 11px;
+  color: #9CA3AF;
+  margin-top: 2px;
+}
+
+/* ── Status badges ─────────────────────────────────────────────────────────── */
+
+.fo-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.fo-badge--PENDING  { background: #FAEEDA; color: #854F0B; }
+.fo-badge--APPROVED { background: #DCFCE7; color: #15803D; }
+.fo-badge--REJECTED { background: #FEF2F2; color: #DC2626; }
+
+/* ── Action buttons ────────────────────────────────────────────────────────── */
+
+.fo-action-wrap {
+  display: flex;
+  gap: 6px;
+}
+
+.fo-btn {
+  padding: 5px 14px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+}
+
+.fo-btn--approve {
+  background: #DCFCE7;
+  color: #15803D;
+  border-color: #86EFAC;
+}
+
+.fo-btn--approve:hover {
+  background: #BBF7D0;
+  border-color: #4ADE80;
+}
+
+.fo-btn--reject {
+  background: #FEF2F2;
+  color: #DC2626;
+  border-color: #FCA5A5;
+}
+
+.fo-btn--reject:hover {
+  background: #FEE2E2;
+  border-color: #F87171;
+}
+
+.fo-btn--approve:disabled,
+.fo-btn--reject:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Confirm modal ─────────────────────────────────────────────────────────── */
+
+.fo-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+}
+
+.fo-modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 28px 24px;
+  width: 400px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.fo-modal__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.fo-modal__sub {
+  font-size: 13px;
+  color: #6B7280;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.fo-modal__details {
+  background: #F9FAFB;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.fo-modal__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.fo-modal__row:last-child { margin-bottom: 0; }
+.fo-modal__row span:first-child { color: #6B7280; }
+.fo-modal__row span:last-child  { font-weight: 600; color: #111827; }
+
+.fo-modal__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.fo-modal__cancel-btn {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #E5E7EB;
+  border-radius: 9px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6B7280;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.fo-modal__cancel-btn:hover { border-color: #9CA3AF; }
+
+.fo-modal__confirm-btn {
+  flex: 1;
+  height: 40px;
+  border: none;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  color: #fff;
+}
+
+.fo-modal__confirm-btn--approve { background: #16A34A; }
+.fo-modal__confirm-btn--approve:hover { background: #15803D; }
+.fo-modal__confirm-btn--reject  { background: #DC2626; }
+.fo-modal__confirm-btn--reject:hover  { background: #B91C1C; }
+
+/* ── Empty state ───────────────────────────────────────────────────────────── */
+
+.fo-empty {
+  text-align: center;
+  padding: 48px 20px;
+}
+
+.fo-empty__icon {
+  width: 56px;
+  height: 56px;
+  background: #F3F4F6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.fo-empty__text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.fo-empty__sub {
+  font-size: 13px;
+  color: #9CA3AF;
+}
+
+/* ── Loading / Error ───────────────────────────────────────────────────────── */
+
+.fo-loading {
+  text-align: center;
+  padding: 48px;
+  font-size: 14px;
+  color: #6B7280;
+}
+
+.fo-error {
+  text-align: center;
+  padding: 48px;
+  font-size: 14px;
+  color: #DC2626;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .fo-metrics { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .fo-sidebar { display: none; }
+  .fo-content { padding: 16px 16px 40px; }
+  .fo-metrics { grid-template-columns: 1fr 1fr; }
+}

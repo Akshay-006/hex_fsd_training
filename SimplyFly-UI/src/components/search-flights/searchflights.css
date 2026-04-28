@@ -1,0 +1,931 @@
+/* ── SimplyFly Search Page — Light Mode ──────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+  background: #F5F6F8;
+  color: #1a1a2e;
+}
+
+/* ── Navbar ────────────────────────────────────────────────────────────────── */
+
+.sf-navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #E8ECF0;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.sf-navbar__logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #185FA5;
+  letter-spacing: -0.5px;
+  margin-right: 40px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sf-navbar__logo span {
+  color: #378ADD;
+}
+
+.sf-navbar__link {
+  font-size: 14px;
+  color: #6B7280;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s;
+  text-decoration: none;
+}
+
+.sf-navbar__link:hover {
+  color: #185FA5;
+}
+
+.sf-navbar__link--active {
+  color: #185FA5;
+  border-bottom: 2px solid #185FA5;
+  font-weight: 600;
+}
+
+.sf-navbar__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sf-navbar__username {
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.sf-navbar__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #B5D4F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0C447C;
+}
+
+/* ── Page Body ─────────────────────────────────────────────────────────────── */
+
+.sf-page {
+  min-height: 100vh;
+  background: #F5F6F8;
+}
+
+.sf-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 40px 60px;
+}
+
+/* ── Search Panel ──────────────────────────────────────────────────────────── */
+
+.sf-search-panel {
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sf-trip-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.sf-trip-tab {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  border: 1px solid #D1D5DB;
+  color: #6B7280;
+  cursor: pointer;
+  background: #fff;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.sf-trip-tab:hover {
+  border-color: #185FA5;
+  color: #185FA5;
+}
+
+.sf-trip-tab--active {
+  background: #185FA5;
+  border-color: #185FA5;
+  color: #fff;
+  font-weight: 600;
+}
+
+.sf-search-fields {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.sf-swap-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 1px;
+}
+
+.sf-swap-btn {
+  width: 38px;
+  height: 48px;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  background: #F9FAFB;
+  color: #6B7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.sf-swap-btn:hover {
+  border-color: #185FA5;
+  color: #185FA5;
+  background: #EFF6FF;
+}
+
+.sf-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sf-field-label {
+  font-size: 11px;
+  color: #9CA3AF;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.sf-field-box {
+  height: 48px;
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 0 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: border-color 0.15s;
+  position: relative;
+}
+
+.sf-field-box--clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sf-field-box--clickable:hover {
+  border-color: #185FA5;
+}
+
+.sf-field-box__main {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sf-field-box__sub {
+  font-size: 11px;
+  color: #9CA3AF;
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sf-field-box__placeholder {
+  font-size: 14px;
+  color: #9CA3AF;
+}
+
+.sf-date-hidden-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+}
+
+.sf-search-btn {
+  height: 48px;
+  padding: 0 28px;
+  background: #185FA5;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  font-family: inherit;
+  align-self: flex-end;
+}
+
+.sf-search-btn:hover {
+  background: #0C447C;
+}
+
+/* ── Airport Dropdown ──────────────────────────────────────────────────────── */
+
+.sf-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 280px;
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  z-index: 200;
+  overflow: hidden;
+}
+
+.sf-dropdown__search {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #F3F4F6;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #111827;
+  outline: none;
+  font-family: inherit;
+  background: #F9FAFB;
+}
+
+.sf-dropdown__search::placeholder {
+  color: #9CA3AF;
+}
+
+.sf-dropdown__list {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.sf-dropdown__list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sf-dropdown__list::-webkit-scrollbar-track {
+  background: #F9FAFB;
+}
+
+.sf-dropdown__list::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 2px;
+}
+
+.sf-dropdown__item {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.1s;
+  border-bottom: 1px solid #F9FAFB;
+}
+
+.sf-dropdown__item:last-child {
+  border-bottom: none;
+}
+
+.sf-dropdown__item:hover {
+  background: #F5F8FF;
+}
+
+.sf-dropdown__item--selected {
+  background: #EFF6FF;
+}
+
+.sf-dropdown__item-city {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sf-dropdown__item-code {
+  font-size: 11px;
+  font-weight: 700;
+  color: #185FA5;
+  background: #E6F1FB;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.sf-dropdown__item-meta {
+  font-size: 11px;
+  color: #9CA3AF;
+  margin-top: 2px;
+}
+
+.sf-dropdown__empty {
+  padding: 16px;
+  font-size: 13px;
+  color: #9CA3AF;
+  text-align: center;
+}
+
+/* ── Passenger Dropdown ────────────────────────────────────────────────────── */
+
+.sf-pax-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 300px;
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  z-index: 200;
+  padding: 20px;
+}
+
+.sf-pax-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9CA3AF;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.sf-pax-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.sf-pax-row:last-of-type {
+  margin-bottom: 0;
+}
+
+.sf-pax-row__info {
+  flex: 1;
+}
+
+.sf-pax-row__label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.sf-pax-row__sub {
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-top: 2px;
+}
+
+.sf-pax-row__counter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sf-pax-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid #D1D5DB;
+  background: #fff;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.sf-pax-btn:hover:not(:disabled) {
+  border-color: #185FA5;
+  color: #185FA5;
+}
+
+.sf-pax-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.sf-pax-btn--plus {
+  border-color: #185FA5;
+  color: #185FA5;
+}
+
+.sf-pax-btn--plus:hover {
+  background: #185FA5;
+  color: #fff;
+}
+
+.sf-pax-count {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  min-width: 20px;
+  text-align: center;
+}
+
+.sf-pax-divider {
+  height: 1px;
+  background: #F3F4F6;
+  margin: 18px 0;
+}
+
+.sf-class-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.sf-class-chip {
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1.5px solid #E5E7EB;
+  font-size: 13px;
+  color: #4B5563;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.sf-class-chip:hover {
+  border-color: #185FA5;
+  color: #185FA5;
+}
+
+.sf-class-chip--active {
+  border-color: #111827;
+  color: #111827;
+  font-weight: 600;
+}
+
+.sf-pax-update-btn {
+  width: 100%;
+  height: 44px;
+  background: #111827;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.sf-pax-update-btn:hover {
+  background: #1F2937;
+}
+
+/* ── Main Layout ───────────────────────────────────────────────────────────── */
+
+.sf-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+}
+
+/* ── Filter Panel ──────────────────────────────────────────────────────────── */
+
+.sf-filter-panel {
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  height: fit-content;
+  position: sticky;
+  top: 72px;
+}
+
+.sf-filter-panel__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.sf-filter-section {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #F3F4F6;
+  padding-bottom: 18px;
+}
+
+.sf-filter-section:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sf-filter-section__head {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+/* ── Check Item ────────────────────────────────────────────────────────────── */
+
+.sf-check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.sf-check-row:last-child {
+  margin-bottom: 0;
+}
+
+.sf-checkbox {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  border: 1.5px solid #D1D5DB;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.sf-checkbox--checked {
+  background: #185FA5;
+  border-color: #185FA5;
+}
+
+.sf-check-row__text {
+  font-size: 13px;
+  color: #4B5563;
+  flex: 1;
+}
+
+.sf-check-row__count {
+  font-size: 11px;
+  color: #9CA3AF;
+}
+
+/* ── Price Range ───────────────────────────────────────────────────────────── */
+
+.sf-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #9CA3AF;
+  margin-bottom: 4px;
+}
+
+.sf-range-track {
+  width: 100%;
+  height: 4px;
+  background: #E5E7EB;
+  border-radius: 2px;
+  margin: 8px 0 4px;
+}
+
+.sf-range-fill {
+  width: 60%;
+  height: 4px;
+  background: #185FA5;
+  border-radius: 2px;
+}
+
+/* ── Time Grid ─────────────────────────────────────────────────────────────── */
+
+.sf-time-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.sf-time-chip {
+  padding: 6px 0;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid #E5E7EB;
+  color: #6B7280;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  background: #fff;
+}
+
+.sf-time-chip:hover {
+  border-color: #185FA5;
+  color: #185FA5;
+}
+
+.sf-time-chip--active {
+  border: 1px solid #185FA5;
+  color: #0C447C;
+  background: #E6F1FB;
+  font-weight: 600;
+}
+
+/* ── Results Area ──────────────────────────────────────────────────────────── */
+
+.sf-results-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sf-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.sf-results-count {
+  font-size: 14px;
+  color: #6B7280;
+}
+
+/* ── Sort Dropdown ─────────────────────────────────────────────────────────── */
+
+.sf-sort-btn {
+  font-size: 13px;
+  color: #185FA5;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 6px 12px;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: inherit;
+  transition: border-color 0.15s;
+  white-space: nowrap;
+}
+
+.sf-sort-btn:hover {
+  border-color: #185FA5;
+}
+
+.sf-sort-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 180px;
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  z-index: 200;
+  overflow: hidden;
+}
+
+.sf-sort-dropdown__item {
+  padding: 11px 16px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.1s;
+  border-bottom: 1px solid #F9FAFB;
+}
+
+.sf-sort-dropdown__item:last-child {
+  border-bottom: none;
+}
+
+.sf-sort-dropdown__item:hover {
+  background: #F5F8FF;
+  color: #185FA5;
+}
+
+.sf-sort-dropdown__item--active {
+  color: #185FA5;
+  font-weight: 600;
+  background: #EFF6FF;
+}
+
+/* ── Flight Card ───────────────────────────────────────────────────────────── */
+
+.sf-flight-card {
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 16px;
+  padding: 18px 22px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+
+.sf-flight-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.sf-flight-card--featured {
+  border: 1.5px solid #378ADD;
+  box-shadow: 0 2px 12px rgba(24, 95, 165, 0.10);
+}
+
+.sf-flight-card__badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.sf-flight-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 110px 120px 120px;
+  gap: 16px;
+  align-items: center;
+}
+
+.sf-flight-row__airline-code {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.sf-flight-row__airline-name {
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-top: 2px;
+}
+
+.sf-route-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sf-time-block__time {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.sf-time-block__airport {
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-top: 3px;
+}
+
+.sf-route-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #D1D5DB;
+  flex-shrink: 0;
+}
+
+.sf-route-line {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sf-route-line__bar {
+  width: 100%;
+  height: 1px;
+  background: #E5E7EB;
+}
+
+.sf-flight-row__duration {
+  font-size: 12px;
+  color: #6B7280;
+  text-align: center;
+}
+
+.sf-flight-row__stops {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+.sf-flight-row__price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #185FA5;
+  line-height: 1;
+}
+
+.sf-flight-row__price-label {
+  font-size: 11px;
+  color: #9CA3AF;
+  margin-top: 3px;
+}
+
+.sf-select-btn {
+  height: 38px;
+  background: #185FA5;
+  border-radius: 10px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.sf-select-btn:hover {
+  background: #0C447C;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .sf-search-fields {
+    grid-template-columns: 1fr 40px 1fr 1fr;
+    row-gap: 10px;
+  }
+
+  .sf-search-btn {
+    grid-column: span 4;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sf-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-filter-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .sf-body {
+    padding: 16px 16px 40px;
+  }
+
+  .sf-navbar {
+    padding: 0 16px;
+  }
+
+  .sf-navbar__link {
+    display: none;
+  }
+
+  .sf-search-fields {
+    grid-template-columns: 1fr 40px 1fr;
+    row-gap: 10px;
+  }
+
+  .sf-search-btn {
+    grid-column: span 3;
+    width: 100%;
+  }
+
+  .sf-flight-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}

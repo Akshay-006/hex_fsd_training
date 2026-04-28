@@ -1,0 +1,704 @@
+/* ── SimplyFly Seat Booking — Screen 3 — Light Mode ─────────────────────── */
+
+.sb-page {
+  min-height: 100vh;
+  background: #F5F6F8;
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+  color: #1a1a2e;
+}
+
+/* ── Navbar ────────────────────────────────────────────────────────────────── */
+
+.sb-navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #E8ECF0;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.sb-navbar__logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #185FA5;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sb-navbar__logo span { color: #378ADD; }
+
+.sb-navbar__flight-info {
+  margin-left: 32px;
+  font-size: 13px;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sb-navbar__flight-info strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.sb-navbar__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #D1D5DB;
+}
+
+.sb-navbar__back {
+  margin-left: auto;
+  font-size: 13px;
+  color: #185FA5;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 6px 14px;
+  background: #fff;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.sb-navbar__back:hover {
+  border-color: #185FA5;
+  background: #EFF6FF;
+}
+
+/* ── Seats needed indicator ────────────────────────────────────────────────── */
+
+.sb-seats-needed-bar {
+  background: #EFF6FF;
+  border-bottom: 1px solid #BFDBFE;
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #1D4ED8;
+}
+
+.sb-seats-needed-bar__label { font-weight: 600; }
+
+.sb-seats-needed-bar__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.sb-seat-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #BFDBFE;
+  background: #fff;
+  transition: all 0.2s;
+}
+
+.sb-seat-dot--filled {
+  background: #185FA5;
+  border-color: #185FA5;
+}
+
+/* ── Body ──────────────────────────────────────────────────────────────────── */
+
+.sb-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 40px 60px;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ── Seat Panel (left) ─────────────────────────────────────────────────────── */
+
+.sb-seat-panel {
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sb-seat-panel__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.sb-seat-panel__sub {
+  font-size: 13px;
+  color: #6B7280;
+  margin-bottom: 16px;
+}
+
+/* ── Legend ────────────────────────────────────────────────────────────────── */
+
+.sb-legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.sb-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.sb-legend__box {
+  width: 22px;
+  height: 20px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.sb-legend__box--available { background: #F3F4F6; border: 1.5px solid #D1D5DB; }
+.sb-legend__box--selected  { background: #185FA5; border: 1.5px solid #185FA5; }
+.sb-legend__box--occupied  { background: #E5E7EB; border: 1.5px solid #E5E7EB; }
+.sb-legend__box--business  { background: #FFF7ED; border: 1.5px solid #FED7AA; }
+.sb-legend__box--extra     { background: #EFF6FF; border: 1.5px solid #BFDBFE; }
+.sb-legend__box--economy   { background: #F0FDF4; border: 1.5px solid #BBF7D0; }
+
+/* ── Plane ─────────────────────────────────────────────────────────────────── */
+
+.sb-plane {
+  background: #F9FAFB;
+  border-radius: 12px;
+  padding: 20px 16px;
+  border: 1px solid #F3F4F6;
+}
+
+.sb-plane__nose {
+  width: 60px;
+  height: 24px;
+  background: #E5E7EB;
+  border-radius: 50% 50% 0 0;
+  margin: 0 auto 16px;
+}
+
+.sb-col-headers {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-left: 36px;
+}
+
+.sb-col-header {
+  width: 40px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9CA3AF;
+}
+
+.sb-col-aisle { width: 36px; }
+
+/* ── Class label ───────────────────────────────────────────────────────────── */
+
+.sb-class-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 10px 0 6px 36px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.sb-class-label--business {
+  background: #FFF7ED;
+  color: #C2410C;
+  border: 1px solid #FED7AA;
+}
+
+.sb-class-label--extra {
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
+}
+
+.sb-class-label--economy {
+  background: #F0FDF4;
+  color: #15803D;
+  border: 1px solid #BBF7D0;
+}
+
+/* ── Seat row ──────────────────────────────────────────────────────────────── */
+
+.sb-seat-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.sb-row-num {
+  width: 28px;
+  font-size: 11px;
+  color: #9CA3AF;
+  text-align: center;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.sb-seats-left  { display: flex; gap: 6px; }
+.sb-seats-right { display: flex; gap: 6px; }
+
+.sb-aisle {
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #D1D5DB;
+}
+
+/* ── Seat button ───────────────────────────────────────────────────────────── */
+
+.sb-seat {
+  width: 40px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1.5px solid #D1D5DB;
+  background: #F3F4F6;
+  font-size: 10px;
+  font-weight: 600;
+  color: #6B7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.sb-seat:hover:not(.sb-seat--occupied):not(.sb-seat--maxed) {
+  border-color: #185FA5;
+  background: #EFF6FF;
+  color: #185FA5;
+  transform: scale(1.08);
+}
+
+.sb-seat--business {
+  background: #FFF7ED;
+  border-color: #FED7AA;
+  color: #C2410C;
+}
+
+.sb-seat--extra {
+  background: #EFF6FF;
+  border-color: #BFDBFE;
+  color: #1D4ED8;
+}
+
+.sb-seat--economy {
+  background: #F0FDF4;
+  border-color: #BBF7D0;
+  color: #15803D;
+}
+
+.sb-seat--selected {
+  background: #185FA5 !important;
+  border-color: #185FA5 !important;
+  color: #ffffff !important;
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(24, 95, 165, 0.35);
+}
+
+.sb-seat--occupied {
+  background: #E5E7EB !important;
+  border-color: #E5E7EB !important;
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* max seats reached — unselected seats become dimmed */
+.sb-seat--maxed {
+  opacity: 0.4;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* ── Right panel ───────────────────────────────────────────────────────────── */
+
+.sb-right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 72px;
+}
+
+.sb-card {
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.sb-card__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 14px;
+}
+
+.sb-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.sb-info-row:last-child { margin-bottom: 0; }
+
+.sb-info-label { color: #6B7280; }
+.sb-info-val   { font-weight: 600; color: #111827; }
+
+/* ── No seat empty state ───────────────────────────────────────────────────── */
+
+.sb-no-seat {
+  text-align: center;
+  padding: 16px 0;
+}
+
+.sb-no-seat__icon {
+  width: 44px;
+  height: 44px;
+  background: #F3F4F6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+}
+
+.sb-no-seat__text  { font-size: 13px; color: #9CA3AF; }
+.sb-no-seat__count { font-size: 12px; color: #185FA5; margin-top: 4px; font-weight: 600; }
+
+/* ── Selected seats list ───────────────────────────────────────────────────── */
+
+.sb-selected-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.sb-selected-item {
+  border: 1px solid #E8ECF0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sb-selected-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #F9FAFB;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.sb-selected-item__seat-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #185FA5;
+}
+
+.sb-selected-item__class {
+  font-size: 11px;
+  color: #6B7280;
+}
+
+.sb-selected-item__remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9CA3AF;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 4px;
+  transition: color 0.15s;
+  font-family: inherit;
+}
+
+.sb-selected-item__remove:hover { color: #EF4444; }
+
+.sb-selected-item__body { padding: 10px 12px; }
+
+.sb-selected-item__fare {
+  font-size: 12px;
+  color: #6B7280;
+  margin-bottom: 8px;
+}
+
+/* co-passenger mini form inside each seat item */
+.sb-copax-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.sb-copax-toggle__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.sb-toggle {
+  position: relative;
+  width: 32px;
+  height: 18px;
+}
+
+.sb-toggle input { opacity: 0; width: 0; height: 0; }
+
+.sb-toggle__track {
+  position: absolute;
+  inset: 0;
+  background: #D1D5DB;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sb-toggle input:checked + .sb-toggle__track { background: #185FA5; }
+
+.sb-toggle__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  pointer-events: none;
+}
+
+.sb-toggle input:checked ~ .sb-toggle__thumb { transform: translateX(14px); }
+
+.sb-copax-fields { display: flex; gap: 8px; }
+
+.sb-form-input-sm {
+  flex: 1;
+  height: 34px;
+  border: 1px solid #E5E7EB;
+  border-radius: 7px;
+  padding: 0 10px;
+  font-size: 12px;
+  color: #111827;
+  background: #F9FAFB;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.sb-form-input-sm:focus {
+  border-color: #185FA5;
+  background: #fff;
+}
+
+.sb-form-input-sm--age { width: 64px; flex: none; }
+
+/* ── Price summary ─────────────────────────────────────────────────────────── */
+
+.sb-price-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #4B5563;
+}
+
+.sb-price-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 700;
+  padding-top: 10px;
+  border-top: 1px solid #F3F4F6;
+  margin-top: 6px;
+  color: #111827;
+}
+
+.sb-price-total span:last-child { color: #185FA5; }
+
+/* ── Confirm button ────────────────────────────────────────────────────────── */
+
+.sb-confirm-btn {
+  width: 100%;
+  height: 46px;
+  background: #185FA5;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.sb-confirm-btn:hover  { background: #0C447C; }
+.sb-confirm-btn:disabled {
+  background: #D1D5DB;
+  cursor: not-allowed;
+  color: #9CA3AF;
+}
+
+/* ── Success modal ─────────────────────────────────────────────────────────── */
+
+.sb-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+}
+
+.sb-success-modal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px 32px;
+  width: 460px;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.sb-success-modal__icon {
+  width: 64px;
+  height: 64px;
+  background: #DCFCE7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.sb-success-modal__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.sb-success-modal__sub {
+  font-size: 13px;
+  color: #6B7280;
+  margin-bottom: 20px;
+}
+
+.sb-success-modal__booking {
+  background: #F9FAFB;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  text-align: left;
+  border: 1px solid #F3F4F6;
+}
+
+.sb-success-modal__booking-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #185FA5;
+  margin-bottom: 6px;
+}
+
+.sb-success-modal__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.sb-success-modal__row:last-child { margin-bottom: 0; }
+.sb-success-modal__row span:first-child { color: #6B7280; }
+.sb-success-modal__row span:last-child  { font-weight: 600; color: #111827; }
+
+.sb-success-modal__total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 16px;
+  background: #EFF6FF;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.sb-success-modal__total span:last-child { color: #185FA5; }
+
+.sb-success-modal__btn {
+  width: 100%;
+  height: 44px;
+  background: #185FA5;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.sb-success-modal__btn:hover { background: #0C447C; }
+
+/* ── Loading / Error ───────────────────────────────────────────────────────── */
+
+.sb-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  font-size: 14px;
+  color: #6B7280;
+}
+
+.sb-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  font-size: 14px;
+  color: #DC2626;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+  .sb-body {
+    grid-template-columns: 1fr;
+    padding: 16px 16px 40px;
+  }
+  .sb-right-panel { position: static; }
+  .sb-navbar      { padding: 0 16px; }
+  .sb-seats-needed-bar { padding: 10px 16px; }
+}

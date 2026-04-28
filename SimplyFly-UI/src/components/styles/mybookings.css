@@ -1,0 +1,349 @@
+/* ── SimplyFly My Bookings — Screen 4 — Light Mode ──────────────────────── */
+
+.mb-page {
+  min-height: 100vh;
+  background: #F5F6F8;
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+  color: #1a1a2e;
+}
+
+.mb-navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #E8ECF0;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.mb-navbar__logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #185FA5;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+  margin-right: 32px;
+}
+
+.mb-navbar__logo span { color: #378ADD; }
+
+.mb-navbar__link {
+  font-size: 14px;
+  color: #6B7280;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.mb-navbar__link--active {
+  color: #185FA5;
+  border-bottom: 2px solid #185FA5;
+  font-weight: 600;
+}
+
+.mb-navbar__avatar {
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #B5D4F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0C447C;
+}
+
+/* ── Body ──────────────────────────────────────────────────────────────────── */
+
+.mb-body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 40px 60px;
+}
+
+.mb-page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.mb-page-sub {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 24px;
+}
+
+/* ── Filter tabs ───────────────────────────────────────────────────────────── */
+
+.mb-filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.mb-filter-tab {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  border: 1px solid #E5E7EB;
+  color: #6B7280;
+  cursor: pointer;
+  background: #fff;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.mb-filter-tab:hover { border-color: #185FA5; color: #185FA5; }
+
+.mb-filter-tab--active {
+  background: #185FA5;
+  border-color: #185FA5;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ── Booking list ──────────────────────────────────────────────────────────── */
+
+.mb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Booking card ──────────────────────────────────────────────────────────── */
+
+.mb-card {
+  background: #ffffff;
+  border: 1px solid #E8ECF0;
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: box-shadow 0.15s;
+}
+
+.mb-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+
+.mb-card--confirmed { border-left: 4px solid #185FA5; }
+.mb-card--completed { border-left: 4px solid #9CA3AF; }
+.mb-card--cancelled { border-left: 4px solid #EF4444; }
+
+.mb-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.mb-card__booking-id {
+  font-size: 12px;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+.mb-status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 20px;
+}
+
+.mb-status-badge--CONFIRMED {
+  background: #EFF6FF;
+  color: #1D4ED8;
+}
+
+.mb-status-badge--COMPLETED {
+  background: #F3F4F6;
+  color: #6B7280;
+}
+
+.mb-status-badge--CANCELLED {
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+/* ── Flight info grid ──────────────────────────────────────────────────────── */
+
+.mb-card__flight {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.mb-info-block__label {
+  font-size: 11px;
+  color: #9CA3AF;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 3px;
+}
+
+.mb-info-block__val {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.mb-info-block__val--blue { color: #185FA5; }
+.mb-info-block__val--green { color: #16A34A; }
+.mb-info-block__val--red { color: #DC2626; }
+
+/* ── Route display ─────────────────────────────────────────────────────────── */
+
+.mb-route {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mb-route__code {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.mb-route__line {
+  flex: 1;
+  height: 1px;
+  background: #E5E7EB;
+  position: relative;
+  max-width: 40px;
+}
+
+.mb-route__arrow {
+  font-size: 12px;
+  color: #9CA3AF;
+}
+
+/* ── Card actions ──────────────────────────────────────────────────────────── */
+
+.mb-card__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.mb-amount {
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 700;
+  color: #185FA5;
+}
+
+.mb-amount__label {
+  font-size: 11px;
+  color: #9CA3AF;
+  font-weight: 400;
+  margin-right: 4px;
+}
+
+.mb-btn {
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  border: 1px solid #E5E7EB;
+  background: #fff;
+  color: #374151;
+}
+
+.mb-btn:hover { border-color: #185FA5; color: #185FA5; }
+
+.mb-btn--cancel {
+  border-color: #FCA5A5;
+  color: #DC2626;
+  background: #FEF2F2;
+}
+
+.mb-btn--cancel:hover {
+  background: #FEE2E2;
+  border-color: #EF4444;
+}
+
+/* ── Empty state ───────────────────────────────────────────────────────────── */
+
+.mb-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #E8ECF0;
+}
+
+.mb-empty__icon {
+  width: 64px;
+  height: 64px;
+  background: #F3F4F6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.mb-empty__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.mb-empty__sub {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin-bottom: 20px;
+}
+
+.mb-empty__btn {
+  padding: 10px 24px;
+  background: #185FA5;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ── Loading / Error ───────────────────────────────────────────────────────── */
+
+.mb-loading {
+  text-align: center;
+  padding: 60px;
+  font-size: 14px;
+  color: #6B7280;
+}
+
+.mb-error {
+  text-align: center;
+  padding: 60px;
+  font-size: 14px;
+  color: #DC2626;
+}
+
+@media (max-width: 768px) {
+  .mb-body { padding: 16px 16px 40px; }
+  .mb-navbar { padding: 0 16px; }
+  .mb-card__flight { grid-template-columns: 1fr 1fr; }
+  .mb-card__actions { flex-wrap: wrap; }
+  .mb-amount { margin-left: 0; width: 100%; }
+}
